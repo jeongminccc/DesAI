@@ -1,0 +1,36 @@
+ <h1>Main Home</h1>
+{% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="javascript:{document.getElementById('logout').submit()}">
+                  <font size="3" color="black">Logout</font>
+                  </a>
+                  <form id="logout" method="POST" action="{% url 'users:logout' %}">
+                  {% csrf_token %} <input type="hidden" />
+                  </form>
+                 </li>
+                {%else%}
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="{% url 'users:login' %}">
+                  <font size="3" color="black">Login</font>
+                  </a>
+                </li><br>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="{% url 'users:signup' %}">
+                  <font size="3" color="black">Signup</font>
+                  </a>
+                </li><br>
+                {% endif %}
+
+<li class="nav-item">
+    <a class="nav-link js-scroll-trigger" href="{% url 'users:mypage' %}">
+    <font size="3" color="black">Mypage</font>
+    </a>
+</li><br> 
+<li class="nav-item">
+    <a class="nav-link js-scroll-trigger" href="{% url 'users:about' %}">
+    <font size="3" color="black">About</font>
+    </a>
+</li><br> 
+<form action="">
+
+</form>

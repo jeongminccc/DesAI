@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{%load staticfiles%}
+
+
+
+<link rel="stylesheet" type ="text/css" href="/static/post_css.css">
+<link rel="stylesheet" type ="text/css" href="/static/detail.css">
+   
+<!-- 게시판 설명 -->
+<div id='intro'>
+  <h1 class='title'>
+    DesAi's WORK
+  </h1> 
+  <p class='context'>DesAi를 통해 만들어진 새로운 이미지들을 확인해보세요</p>
+</div>
+
+<div class="upload" style="width: 100%">
+  <a href="{% url 'post:upload'%}" style="float: right;">
+    <img src="{% static 'upload.png' %}" style="width: 20%;"/>
+  </a>
+</div>
+
+
+
+<div class="grid" style="margin-top:6rem">
+    <div class="grid-sizer"></div>
+    {% for post in posts %}
+      <div class="grid-item">
+        <a href="{% url 'post:post_detail' post.id %}">
+          <img src="{{ post.image.url }}"
+             onmouseover="this.src='{% if post.result.get %} {{ post.result.get.image.url }} {% else %} {{ post.image.url }} {% endif %}'"  
+             onmouseout="this.src='{{ post.image.url }}'" 
+             />
+          <p class = "item_text">{{post.title}}</p>
+        </a>
+      </div>
+    {% endfor %}
+</div>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script>
+// external js: masonry.pkgd.js, imagesloaded.pkgd.js
+// init Masonry
+var grid = document.querySelector('.grid');
+
+var msnry = new Masonry( grid, {
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer',
+  percentPosition: true
+});
+
+imagesLoaded( grid ).on( 'progress', function() {
+  // layout Masonry after each image loads
+  msnry.layout();
+});
+</script>
+
+
+{%endblock%}

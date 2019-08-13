@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{%load staticfiles%}
+
+   
+<style>
+input:focus {
+  border-bottom: 1px solid #E91E63 !important;
+  box-shadow: 0 1px 0 0 #E91E63 !important;
+}
+label.active {
+  color: #E91E63;
+}
+</style>
+  
+    <form class="col s12" method="POST" action="{% url 'users:signup' %}" 
+        enctype="multipart/form-data" style = "margin-top:5%; text-align : center;">
+    {%csrf_token%}
+      <div class="row" style = "width : 40%; text-align : left; margin: 0 auto">
+        <div class="input-field col s12">
+          <label style="font-size:120%; color:white; font-family: GothicA1; " for="ID">Username</label>
+          <input name="username" type="text" required="true" style = "color:white ; width : 60%; float : right;" >
+        </div>
+      </div>
+      <br>
+      <div class="row" style = "width : 40%; text-align : left; margin: 0 auto">
+        <div class="input-field col s12">
+          <label style="font-size:120%; color:white; font-family: GothicA1; " for="name">Name</label>
+          <input name="name" type="text" required="true" style = "color:white ; width : 60%; float : right;">
+        </div>
+      </div>        
+      <br>       
+      <div class="row" style = "width : 40%; text-align : left; margin: 0 auto">
+        <div class="input-field col s12">
+          <label style="font-size:120%; color:white; font-family: GothicA1;" for="password">Password</label>
+          <input name="password1" type="password" value="" required="true" style = "color:white ; width : 60%; float : right;">
+        </div>
+      </div>
+     <br>
+     <div class="row" style = "width : 40%; text-align : left; margin: 0 auto">
+        <div class="input-field col s12">
+          <label style="font-size:120%; color:white; font-family: GothicA1;" for="password">Password Confirm</label>
+          <input name="password2" type="password" value="" required="true" style = "color:white ; width : 60%; float : right;">
+        </div>
+      </div>      
+      <br>
+      <div class="row" style = "width : 40%; text-align : left; margin: 0 auto">
+        <div class="input-field col s12">
+          <label style="font-size:120%; color:white; font-family: GothicA1;" for="email">E-mail</label>
+          <input name="email" type="text" value="" required="true" style = "color:white ; width : 60%; float : right;">
+        </div>
+      </div>      <br>
+      <input class="btn deep-purple darken-3" type="submit" value="Submit" style = "color:white">
+    </form>
+
+{%endblock%}

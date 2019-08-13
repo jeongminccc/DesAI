@@ -1,0 +1,148 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{%load staticfiles%}
+
+    <link rel="stylesheet" type ="text/css" href="/static/reset.css">
+    <link rel="stylesheet" type ="text/css" href="/static/detail.css">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1&display=swap" rel="stylesheet">
+
+    <!-- 게시판 설명 -->
+    <div id='intro'>
+        <h1 class='title'>
+            DesAi's WORK
+        </h1> 
+        
+        <p class='context'>DesAi를 통해 만들어진 새로운 이미지들을 확인해보세요</p>
+    </div>
+    
+    <!-- 버튼 -->
+    <div class="button">
+        <a class="item1" href="{% url 'post:post' %}">
+            <img src="{% static 'arrow.png' %}"/>
+        </a>
+        <a class="item2" href="{% url 'post:post_delete' post.id%}">
+            <img src="{% static 'delete.png' %}"/>
+        </a>
+        <a class="item3" href="{% url 'post:post_modify' post.id%}">
+            <img src="{% static 'edit.png' %}"/>
+        </a>
+    </div>
+
+    <!-- 카드 -->
+    <div class="card" style="display: block">   
+        <div class="post">
+            <div class="post_title">
+                <ul>
+                    <li class="title">
+                        <h1>{{post.title}}</h1>
+                    </li>
+                    <li class="date">
+                        <h4>{{post.created_at}}</h4>
+                    </li>
+                </ul>
+            </div>
+            
+            <hr>
+            <img class="pic" src="{{ post.image.url }}"/>
+
+            <div class="post_context">
+                <h1 class="title"> <사진설명> </h1>
+                <h4>{{post.context}}</h4>
+            </div>
+            <div class="post_context">
+                <h1 class="title"> <요구사항> </h1>
+                <h4>{{post.needs}}</h4>
+            </div>
+        </div>
+
+      
+        <!-- 결과물 -->
+        {% for result in results %}
+        <div class="post">
+            <div class="post_title">
+                <ul>
+                    <li class="title">
+                        <h1> 결과물 </h1>
+                    </li>
+                    <li class="date">
+                        <h4>{{result.created_at}}</h4>
+                    </li>
+                </ul>
+            </div>
+                
+            <hr>
+            <img class="pic" src="{{ result.image.url }}"/>
+
+            <div class="post_context">
+                <h1 class="title"> <사진설명> </h1>
+                <h4>{{result.context}}</h4>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        
+        <style>
+            textarea:focus {
+              border-bottom: 1px solid #000dff !important;
+              box-shadow: 0 1px 0 0 #000dff !important;
+            }
+            label.active {
+              color: #000dff !important;
+            }
+            i.active {
+              color: #000dff !important;
+            }
+        </style>
+        <!-- 댓글 -->
+        <div class="row" style="margin-bottom: 0;">
+            <form class="col s12" method="POST" action="{% url 'post:comment_upload' post.id %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="comment">
+                            <div class="input-field col s11">
+                                <i class="material-icons prefix">mode_edit</i>
+                                <textarea id="icon_prefix2" class="materialize-textarea" name="context"></textarea>
+                                <label for="icon_prefix2">댓글쓰기</label>                        
+                            </div>  
+                            <button class="btn deep-purple darken-3" style="margin-top: 3%; margin-right: 1%;" type="submit" >
+                                <b>등록</b>
+                            </button>                                
+                        </div>
+                        
+                    </div>
+            </form>
+        </div>
+<!-- 댓글목록 -->
+        <div class="comment_list">
+            {% for comment in comments %}
+            <div class="comment_info">
+                <b class="creator">
+                    {{comment.creator}}
+                </b>
+                <b class="date">
+                    {{comment.created_at}}
+                </b>
+            </div>
+            <div class="comment_text">
+                <b class="text">
+                    {{comment.text}}
+                </b>
+                <!-- <b class="commnet_delete">
+                    <button>
+                        <a href="{% url 'post:comment_delete' comment.id%}">댓글삭제</a>
+                    </button>                        
+                </b> -->
+                
+            </div>
+            <hr>
+            {% endfor %}
+        </div> 
+    </div>
+
+
+
+
+{%endblock%}

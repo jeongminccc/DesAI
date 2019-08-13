@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{%load staticfiles%}
+<link rel="stylesheet" type ="text/css" href="/static/index_css.css">
+
+<div style="margin-top: 0px;">
+    <img src="{% static 'index_1.png' %}" class="content_1">
+</div>
+
+<div style="margin-top: -3%;">
+    <img src="{% static 'index_2.png' %}" class="content_2">
+</div>
+
+<div>
+    <img src="{% static 'index_3.png' %}" class="content_3">
+</div>
+
+<div>
+    <p style="position: relative; margin-top:20px;">가나다</p>
+    <a href=""><img src="{%static 'index_mid_bg_2.png' %}" class="home_mid_bg" sytle="position:absolute"></a>
+</div>
+<!--<div style="margin-top:100px"></div>
+<div style="width: 50%; margin: 0 auto">
+    <p style = "position:absolute; margin:0 auto">가나다
+    </p>
+    <canvas id="myChart"></canvas>
+</div>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+
+<script>
+    var ctx = document.getElementById('myChart');
+    // per 값으로 좋아요의 값이 들어와야함
+    var like_per = 4.8;
+    var dislike_per = 0.2;
+
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                label: '# of Votes',
+                
+                data: [like_per,dislike_per],
+
+                backgroundColor:[
+                    'rgba(255,99,132)',
+                    'rgba(0,0,0,0)'
+                ],
+
+                borderColor: [
+                    'rgba(255, 99, 132)',
+                ],
+
+                borderAlign : 'inner',
+            }]
+        },
+    });
+</script>
+
+
+{%endblock%}

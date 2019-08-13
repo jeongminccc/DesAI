@@ -1,0 +1,41 @@
+
+    <title>Update</title>
+<!--   타이틀-->          
+    <a class="title_sub waves-effect waves-light btn-small pink"><b>수정하기</b></a>
+    
+<!--   개인정보-->
+<div class="row">
+    <form class="col s12" method='POST' action="" enctype="multipart/form-data">
+    {%csrf_token%}
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text", name="name" value="{{user.name}}" required="true">
+          <label for="first_name">이름</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s12">
+        <input name="password1" type="password" value="" required="true">
+          <label for="password">비밀번호</label>
+        </div>
+      </div>
+    
+     <div class="row">
+        <div class="input-field col s12">
+        <input name="password2" type="password" value="" required="true">
+          <label for="password">비밀번호 확인</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="email" type="text" class="validate" value="" required="true">
+          <label for="email">email</label>
+        </div>
+      </div>
+
+        <input class="title_sub waves-effect waves-light btn-large pink signup" type="submit" value="수정하기">
+    </form>
+  </div>
+

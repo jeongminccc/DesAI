@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{% load staticfiles %}
+<style>div {font-family: 'Gothic A1', sans-serif;}</style>
+  <body id="" style="background-color: black">
+    <form class="col s12" method="POST" action="{% url 'users:mypage' %}" 
+        enctype="multipart/form-data" style = "margin-top:10%; text-align : center;">
+<br>
+<div class="row">
+      <h4 class="center-align" style = "color :white; font-family: GothicA1; text-decoration:underline blue">마이페이지</h4> <br><br>
+      <div class="card" style="border-radius: 20px;display: block; width: 60%; margin : 0 auto; text-align : left;">
+      <br>
+        <div style = "margin-left : 5%; margin-right : 5%;  margin-bottom : 10%;">
+            <h6 class="center-align" style = "text-align : left; color : black; font-size : 130%">{{user.username}}님의 활동</h6>
+
+
+            <p style = "font-size : 70%;">완료 {{a}}개 진행중 {{b}}개
+
+              </p>
+            <hr style = "border: thin solid blue;" >
+        <!--버튼-->
+        <div class="left-align">
+            <p style = "font-size : 120%;">요청내역  </p>
+        </div>
+
+        <div class = "row" style = "margin-bottom : -2%;">
+             <p class = "col s7" style = "font-size : 80%;">이름</p>
+             <p class = "col s2" style = "font-size : 80%;">상태</p>
+             <p class = "col s3" style = "font-size : 80%;">요청 일자</p>
+        </div>
+           <hr>
+                  {% for post in posts %}        
+                    <div class = "row" style = "margin-bottom : -3%;">
+                        <p class = "col s7" style = "font-size : 110%;">{{post.title}}</p>
+                        <p class = "col s2" style = "font-size : 90%;">
+                        {% if post.result.count == 0 %} 진행중
+                        {% else %} 완료
+                        {% endif %} </p>
+                        <p class = "col s3" style = "font-size : 90%;">{{post.created_at}}</p>
+                    </div>
+                      <hr>
+                  {% endfor %}
+<br>
+        </div>
+        </div>
+      </div>
+  </div><br><br><br><br><br><br><br><br>
+</body>
+
+
+
+</html>
+{%endblock%}

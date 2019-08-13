@@ -1,0 +1,49 @@
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid {
+  background: #000000;
+  width : 90%;
+  margin-left: 5%;
+  margin-right : 5%;
+
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,.grid-item {
+  width: 33.33333%;
+}
+
+.grid-item {
+  float: left;
+  padding:2%;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+.item_text{
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+}

@@ -1,0 +1,227 @@
+body {
+	background-color: black;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+html, body{
+	/*set the body to full height*/
+	height: 100%; 
+	/* cahnge fonts inside the card */
+	font-family: roboto;
+}
+.button{
+	width: 100%;
+}
+
+.button img{
+	width: 50%;
+}
+
+.button .item1{
+	left: 12%;
+	position: fixed;
+}
+.button .item2{
+	right: 3%;
+	position: fixed;
+}
+.button .item3{
+	right: 8%;
+	position: fixed;
+}
+
+.card{
+	display: inline-block;
+	width: 60%;
+	min-width: 400px;
+	height: auto; /*height equals 80% removed*/
+	min-height: 600px;
+	margin: 0 auto;
+	top: 10%;
+	text-align: center; /*center text*/
+	background-color: ghostWhite;
+	border-radius: 20px;
+}
+
+.pic{
+  /*  creates circle for img  */
+  /* border-radius: 50%; */
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+#intro {
+	text-align: center;
+	margin-top: 10%;
+}
+#intro .title {
+	font-family: GothicA1;
+	font-size: 2rem;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	text-decoration: underline;
+	text-decoration-color: #000dff;
+}
+
+#intro .context{
+	font-family: GothicA1;
+	font-size: 1rem;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+
+	margin-top: 1rem;
+}
+.post{
+	padding-top: 5%;
+}
+.post_title{
+	width: 100%;
+}
+.post_title .title {
+	padding-left: 10%;
+	font-family: GothicA1;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #4a4a4a;
+	text-align: left;
+
+	margin: 2rem 0 0 0;
+
+	position: relative;
+}
+
+.post_title .date {
+	position: absolute ; 
+	right:0;
+	margin-top: -2%;
+	margin-right: 10%;
+}
+
+.post hr{
+	background-color: #000dff;
+	height: 0.05rem;
+	width: 80%;
+	margin-top: 0.3rem;
+	padding: 0;
+}
+
+.post .pic{
+	margin-top: 2rem;
+}
+
+
+
+.post_context .title{
+	font-family: GothicA1;
+	font-size: 1.1rem;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	
+	color: #4a4a4a;
+	text-decoration: underline;
+	text-decoration-color: #000dff;
+	text-align: left;
+
+	margin: 5% 0 2% 10%;
+}
+
+.post_context h4{
+	font-family: GothicA1;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1.5;
+	color: #4a4a4a;
+
+	text-align: left;
+	margin: 2% 11% 5% 11%;
+}
+
+.comment{
+	width: 100%;
+}
+
+.comment div{
+
+}
+.comment button{
+	margin-top: 3%;
+	float: right;
+}
+
+.comment_list{
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	margin-top: 0;
+	margin-bottom: 7%;
+}
+
+.comment_list hr{
+	width: 92%;
+}
+
+.comment_list .comment_info{
+	width: 100%;
+	display: inline-block;
+}
+.comment_info .creator{
+	font-family: GothicA1;
+	font-size: 1rem;
+	color: #4a4a4a;
+
+	float: left;
+	margin: 0 0 1% 5%;
+	/* width: 10%;
+	height: 10%; */
+}
+.comment_info .date{
+	font-family: GothicA1;
+	font-size: 0.7rem;
+	color: #4a4a4a;
+	/* display: inline-block; */
+	float: right;
+	margin: 0 5% 1% 0;
+	/* width: 10%;
+	height: 10%; */
+}
+
+.comment_list .comment_text{
+	width: 100%;
+	display: inline-block;
+	
+}
+.comment_text .text{
+	/* display: inline-block; */
+	float: left;
+	margin: 0 10% 0 7%;
+	font-family: GothicA1;
+	font-size: 1.1rem;
+	font-weight: bold;
+	/* width: 10%;
+	height: 10%; */
+}
+.comment_text .comment_delete{
+	/* display: inline-block; */
+	float: right;
+	margin: 0 10% 0 10%;
+	/* width: 10%; */
+	/* height: 10%; */
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html lang="en">
+
+  <head>
+    {% block title %}
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DesAi</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--    메터리얼라이즈-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--    <script type="text/javascript" src="./script.js"></script>-->
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+    </script>
+
+    <style>div {font-family: 'Gothic A1', sans-serif;}</style>
+  </head>
+  <body id="" style="background-color: black">
+        <nav style="width: 100%;">
+          <div class="nav-wrapper black" style="padding: 3% 10%;">
+            <a href="{%url 'home'%}" class="brand-logo" style="text-align: center;"><img src="{%static 'desai_logo.png'%}" alt="" style="width: 40%;"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger" style="float: right; margin-right: -18px; margin-left: -18px;"><i class="material-icons" style="font-size: 2rem;">menu</i></a>
+            <ul class="right hide-on-med-and-down" style="padding-top: 0%; margin-right: ;">
+              <li><a href="{%url 'team'%}" style="font-size: 1rem">개발자 소개</a></li>
+              <li><a href="{%url 'faq'%}" style="font-size: 1rem">FAQ</a></li>
+              <li><a href="{%url 'post:post'%}" style="font-size: 1rem">DesAi's WORK</a></li>
+              {% if user.is_authenticated %}
+              {% csrf_token %} 
+                <li><a href="{%url 'user:logout'%}" style="font-size: 1rem">로그아웃</a></li>
+                <li><a href="{%url 'user:mypage'%}">마이페이지</a></li>
+              {%else%}  
+                <li><a href="{%url 'user:login'%}" style="font-size: 1rem">로그인</a></li>
+                <li><a href="{%url 'user:signup'%}" style="font-size: 1rem">회원가입</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      
+        <ul class="sidenav" id="mobile-demo">
+          <li><a href="{%url 'team'%}">개발자 소개</a></li>
+          <li><a href="{%url 'faq'%}">FAQ</a></li>
+          <li><a href="{%url 'post:post'%}">DesAi's WORK</a></li>
+          {% if user.is_authenticated %}
+          {% csrf_token %} 
+            <li><a href="{%url 'user:mypage'%}">마이페이지</a></li>
+            <li><a href="{%url 'user:logout'%}">로그아웃</a></li>
+          {%else%}  
+            <li><a href="{%url 'user:login'%}">로그인</a></li>
+            <li><a href="{%url 'user:signup'%}">회원가입</a></li>
+          {% endif %}
+        </ul>
+    {% block content %}
+    {% endblock %}
+
+  </body>
+
+  <footer>
+        <img src="/static/footer.png" alt="" style="width: 100%;">
+</footer>
+</html>
